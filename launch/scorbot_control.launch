@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<launch>
+    <!-- Load joint conrtoller -->
+    <rosparam file="$(find scorbot)/config/pid.yaml" command="load"/>
+
+    <!-- Load controller  -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/scorbot" args=" m1_position_controller m2_position_controller m3_position_controller m4_position_controller m5_position_controller joint_state_controller"/>
+
+    <!-- Convert joints states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+        <remap from="/joint_states" to="/scorbot/joint_states" />
+    </node>
+</launch>

@@ -1,0 +1,41 @@
+{
+    "trajectories": {
+        "path": "/home/jacob/ws/src/scorbot/trajectories/joints_trajectory.csv",
+        "column_names": ["q1", "q2", "q3", "q4", "q5"],
+        "floating_base_path": "/home/jacob/ws/src/scorbot/trajectories/cartesian_trajectory.csv",
+        "fb_column_names": ["X", "Y", "Z"]
+    }
+    ,
+    "command_paths": [
+        "scorbot/m1_position_controller/command",
+        "scorbot/m2_position_controller/command",
+        "scorbot/m3_position_controller/command",
+        "scorbot/m4_position_controller/command",
+        "scorbot/m5_position_controller/command"
+    ],
+    "state_paths": [
+        "scorbot/m1_position_controller/state",
+        "scorbot/m2_position_controller/state",
+        "scorbot/m3_position_controller/state",
+        "scorbot/m4_position_controller/state",
+        "scorbot/m5_position_controller/state"
+    ],
+    "client_paths": [
+        "scorbot/m1_position_controller/pid",
+        "scorbot/m2_position_controller/pid",
+        "scorbot/m3_position_controller/pid",
+        "scorbot/m4_position_controller/pid",
+        "scorbot/m5_position_controller/pid"
+    ],
+    "pid_bounds": {
+        "p":[
+            0, 100
+        ],
+        "i": [
+            0, 10
+        ], 
+        "d": [
+            0, 1
+        ]
+    }
+}

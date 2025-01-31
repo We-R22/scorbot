@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+
+<robot name="scorbot">
+
+    <link name="world"/>
+
+    <joint name="fixed" type="fixed">
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="world"/>
+        <child link="base_link"/>
+    </joint>
+
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.00063327 0.00002002 0.08600836" rpy="0.0 0.0 0.0"/>
+            <mass value="5.64418463"/>
+            <inertia ixx="0.03159046" ixy="0.0" ixz="0.0" iyy="0.03159045" iyz="0.00000859" izz="0.02690899"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/base_link.stl" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/base_link.stl" scale="1 1 1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="j1" type="revolute">
+        <origin xyz="0.0 0.0 0.19" rpy="0.0 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="link_1"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="20.0"/>
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+
+    <transmission name="m1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j1">
+            <mechanicalReduction>1.0</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <link name="link_1">
+        <inertial>
+            <origin xyz="-0.03930974 0.0 0.07464813" rpy="0.0 0.0 0.0"/>
+            <mass value="0.76082182"/>
+            <inertia ixx="0.00625249" ixy="0.0" ixz="0.00099059" iyy="0.00574761" iyz="0.0" izz="0.00805851"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_1.stl" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_1.stl" scale="1 1 1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="j2" type="revolute">
+        <origin xyz="-0.025 -0.095 0.16205" rpy="1.57 0.0 0.0"/>
+        <parent link="link_1"/>
+        <child link="link_2"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="20.0"/>
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+
+    <transmission name="m2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j2">
+            <mechanicalReduction>1.0</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <link name="link_2">
+        <inertial>
+            <origin xyz="0.10539325 0.01595524 -0.09500000" rpy="0.0 0.0 0.0"/>
+            <mass value="0.45100885"/>
+            <inertia ixx="0.00280980" ixy="0.00005266" ixz="0.0" iyy="0.00392943" iyz="0.0" izz="0.00150072"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_2.stl" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_2.stl" scale="1 1 1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="j3" type="revolute">
+        <origin xyz="0.22 0.0 -0.01" rpy="0.0 0.0 0.0"/>
+        <parent link="link_2"/>
+        <child link="link_3"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="20.0"/>
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+
+    <transmission name="m3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j3">
+            <mechanicalReduction>1.0</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <link name="link_3">
+        <inertial>
+            <origin xyz="0.10355563 0.01245472 -0.08492515" rpy="0.0 0.0 0.0"/>
+            <mass value="0.33453905"/>
+            <inertia ixx="0.00179957" ixy="0.00003783" ixz="-0.00000085" iyy="0.00251621" iyz="-0.00000044" izz="0.00095300"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_3.stl" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_3.stl" scale="1 1 1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="j4" type="revolute">
+        <origin xyz="0.22 0.0 0.0" rpy="0.0 0.0 1.57"/>
+        <parent link="link_3"/>
+        <child link="link_4"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="20.0"/>
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+
+    <transmission name="m4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j4">
+            <mechanicalReduction>1.0</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <link name="link_4">
+        <inertial>
+            <origin xyz="-0.00000004 -0.02155892 -0.08499989" rpy="0.0 0.0 0.0"/>
+            <mass value="0.43957892"/>
+            <inertia ixx="0.00154062" ixy="-0.00000001" ixz="0.0" iyy="0.00071661" iyz="0.0" izz="0.00092437"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_4.stl" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_4.stl" scale="1 1 1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="j5" type="revolute">
+        <origin xyz="0.0 -0.14790 -0.085" rpy="1.57 1.57 0.0"/>
+        <parent link="link_4"/>
+        <child link="link_5"/>
+        <axis xyz="0.0 0.0 1.0"/>
+        <limit lower="-3.14" upper="3.14" effort="10.0" velocity="20.0"/>
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+
+    <transmission name="m5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j5">
+            <mechanicalReduction>1.0</mechanicalReduction>
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </actuator>
+    </transmission>
+
+    <link name="link_5">
+        <inertial>
+            <origin xyz="0.0 0.0 -0.00500000" rpy="0.0 0.0 0.0"/>
+            <mass value="0.01147285"/>
+            <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_5.stl" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="package://scorbot/meshes/link_5.stl" scale="1 1 1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <gazebo>
+        <plugin name = "gazebo_ros_control" filename = "libgazebo_ros_control.so">
+            <robotNamespace>/scorbot</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>

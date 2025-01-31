@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+    <include file="$(find scorbot)/launch/scorbot_spawn.launch" />
+    <include file="$(find scorbot)/launch/scorbot_control.launch" />
+</launch>

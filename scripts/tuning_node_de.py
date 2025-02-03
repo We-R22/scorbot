@@ -16,13 +16,13 @@ F = 0.90
 C = 0.90
 hz = 25
 
-de = DifferentialEvolution(N, m, Gm, F, C, A, '/home/jacob/ws/src/scorbot/config/paths.json', epsilon_1=1, tm=28800)
+de = DifferentialEvolution(N, m, Gm, F, C, A, '/home/jacob/ws/src/scorbot/config/paths.json', epsilon_1=10, tm=28800)
 
 X = de.gen_population()
 
-def evol_loop():
+def evol_loop(arg1):
     rospy.init_node("tuning_node")
-    file = open("best_pid_values_DE.txt", 'w')
+    file = open("best_pid_values_DE_"+str(arg1)+".txt", 'w')
     
     reset_control.init_values()
     rate = rospy.Rate(hz)
@@ -34,7 +34,9 @@ def evol_loop():
         break
 
 if __name__ == '__main__':
+    arg1 = sys.argv[1]
+
     try:
-        evol_loop()
+        evol_loop(arg1)
     except rospy.ROSInterruptException:
         pass
